@@ -8,14 +8,14 @@ import { addIngredient, setBun } from '../../services/slices/constructor-slice';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
   ({ ingredient, count }) => {
-    const dispatch = useDispatch();
-    const location = useLocation();
+    const action = useDispatch();
+    const currentLocation = useLocation();
 
-    const handleAdd = () => {
+    const onSelect = () => {
       if (ingredient.type === 'bun') {
-        dispatch(setBun(ingredient));
+        action(setBun(ingredient));
       } else {
-        dispatch(addIngredient(ingredient));
+        action(addIngredient(ingredient));
       }
     };
 
@@ -23,8 +23,8 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
       <BurgerIngredientUI
         ingredient={ingredient}
         count={count}
-        locationState={{ background: location }}
-        handleAdd={handleAdd}
+        locationState={{ background: currentLocation }}
+        handleAdd={onSelect}
       />
     );
   }
