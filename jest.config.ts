@@ -1,24 +1,18 @@
-import type { Config } from 'jest';
+import type { Config } from '@jest/types';
 
-const config: Config = {
+const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  rootDir: './',
-  moduleDirectories: ['node_modules', 'src'],
+  roots: ['<rootDir>/src'],
   collectCoverage: true,
-  coverageDirectory: 'coverage',
-  coverageProvider: 'v8',
-  moduleNameMapper: {
-    '@cmpnts': ['<rootDir>/src/components'],
-    '@uicomps': ['<rootDir>/src/components/ui'],
-    '@screens': ['<rootDir>/src/pages'],
-    '@types': ['<rootDir>/src/utils/types'],
-    '@apiClient': ['<rootDir>/src/utils/burger-api.ts'],
-    '@slices': ['<rootDir>/src/services/slices'],
-    '@hooks': ['<rootDir>/src/hooks'],
-    '@store': ['<rootDir>/src/services/store.ts'],
-    '@selectors': ['<rootDir>/src/services/selectors']
-  }
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/**/*.d.ts',
+    '!src/**/index.{ts,tsx}'
+  ],
+  coverageDirectory: '<rootDir>/coverage',
+  coverageReporters: ['html', 'text', 'lcov'],
+  coveragePathIgnorePatterns: ['/node_modules/']
 };
 
 export default config;
