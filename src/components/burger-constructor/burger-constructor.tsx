@@ -54,7 +54,8 @@ export const BurgerConstructor: FC = () => {
   const price = useMemo(() => {
     const bunPrice = constructorItems.bun ? constructorItems.bun.price * 2 : 0;
     const fillingPrice = constructorItems.ingredients.reduce(
-      (sum: number, ingredient: TConstructorIngredient) => sum + ingredient.price,
+      (sum: number, ingredient: TConstructorIngredient) =>
+        sum + ingredient.price,
       0
     );
     return bunPrice + fillingPrice;
