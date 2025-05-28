@@ -12,7 +12,7 @@ import {
 } from '../../utils/burger-api';
 import { TUser } from '../../utils/types';
 
-interface UserState {
+export interface UserState {
   user: TUser | null;
   loading: boolean;
   error: string | null;
@@ -65,7 +65,6 @@ export const logoutUser = createAsyncThunk<void, void, { rejectValue: string }>(
   async (_, { rejectWithValue }) => {
     try {
       await logoutApi();
-      // Очистим токены
       localStorage.removeItem('refreshToken');
       document.cookie = 'accessToken=; path=/; max-age=0';
     } catch (err: any) {
@@ -222,3 +221,4 @@ const userSlice = createSlice({
 
 export const { clearPasswordReset } = userSlice.actions;
 export const userReducer = userSlice.reducer;
+export { initialUserState };
