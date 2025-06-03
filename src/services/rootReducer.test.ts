@@ -1,24 +1,26 @@
-import { test, describe, expect } from '@jest/globals';
 import { rootReducer } from './root-reducer';
+import { ingredientsReducer } from './slices/ingredients-slice';
+import { feedReducer } from './slices/feeds-slice';
+import { ordersReducer } from './slices/orders-slice';
+import { userReducer } from './slices/user-slice';
+import { constructorReducer } from './slices/constructor-slice';
 
-import { initialUserState } from './slices/user-slice';
-import { initialFeedsState } from './slices/feeds-slice';
-import { initialOrderState } from './slices/orders-slice';
-import { initialIngredientsState } from './slices/ingredients-slice';
-import { initialConstructorFeedsState } from './slices/constructor-slice';
+describe('rootReducer', () => {
+  it('возвращает initial state каждого слайса при неизвестном экшене', () => {
+    const globalState = rootReducer(undefined, { type: '' });
 
-describe('Root reducer: начальное состояние', () => {
-  test('возвращает начальное состояние, если передан неизвестный экшен', () => {
-    const fakeAction = { type: 'SOME_RANDOM_ACTION' };
+    expect(globalState.ingredients).toEqual(
+      ingredientsReducer(undefined, { type: '' })
+    );
 
-    const result = rootReducer(undefined, fakeAction);
+    expect(globalState.feed).toEqual(feedReducer(undefined, { type: '' }));
 
-    expect(result).toEqual({
-      user: initialUserState,
-      feed: initialFeedsState,
-      orders: initialOrderState,
-      ingredients: initialIngredientsState,
-      constructorBurger: initialConstructorFeedsState
-    });
+    expect(globalState.orders).toEqual(ordersReducer(undefined, { type: '' }));
+
+    expect(globalState.user).toEqual(userReducer(undefined, { type: '' }));
+
+    expect(globalState.constructorBurger).toEqual(
+      constructorReducer(undefined, { type: '' })
+    );
   });
 });

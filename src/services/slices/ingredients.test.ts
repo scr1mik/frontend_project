@@ -27,7 +27,6 @@ describe('Тесты thunk fetchIngredients', () => {
   test('fetchIngredients успешно получает ингредиенты', async () => {
     const store = setupStore();
 
-    // Мокаем getIngredientsApi чтобы вернуть тестовые данные
     const mockedData = [
       {
         _id: '1',

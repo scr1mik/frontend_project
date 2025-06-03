@@ -1,5 +1,3 @@
-import { configureStore } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
 import {
   userReducer,
   initialUserState,
@@ -22,7 +20,9 @@ describe('userSlice reducer and async thunks', () => {
   });
 
   test('should handle initial state', () => {
-    expect(userReducer(undefined, { type: 'unknown' })).toEqual(initialUserState);
+    expect(userReducer(undefined, { type: 'unknown' })).toEqual(
+      initialUserState
+    );
   });
 
   test('should handle clearPasswordReset', () => {
@@ -100,7 +100,10 @@ describe('userSlice reducer and async thunks', () => {
     });
 
     test('should clear user on fulfilled', () => {
-      const prevState = { ...state, user: { name: 'A', email: 'a@example.com' } };
+      const prevState = {
+        ...state,
+        user: { name: 'A', email: 'a@example.com' }
+      };
       const action = { type: logoutUser.fulfilled.type };
       const newState = userReducer(prevState, action);
       expect(newState.user).toBeNull();
