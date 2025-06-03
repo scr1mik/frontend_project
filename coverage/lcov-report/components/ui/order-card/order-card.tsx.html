@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>0/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
@@ -142,7 +142,14 @@
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,7 +163,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,6 +195,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,7 +236,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { FC, memo } from 'react';</span>
-<span class="cstat-no" title="statement not covered" >import { Link } from 'react-router-dom';</span>
+<span class="cstat-no" title="statement not covered" >import { Link, useLocation } from 'react-router-dom';</span>
 <span class="cstat-no" title="statement not covered" >import {</span>
   CurrencyIcon,
   FormattedDate
@@ -234,71 +248,78 @@ import { OrderCardUIProps } from './type';
 <span class="cstat-no" title="statement not covered" >import { OrderStatus } from '@components';</span>
 &nbsp;
 export const <span class="cstat-no" title="statement not covered" >OrderCardUI: FC&lt;OrderCardUIProps&gt; = memo(</span>
-<span class="fstat-no" title="function not covered" >  ({</span> orderInfo<span class="cstat-no" title="statement not covered" >, m</span>axIngredients<span class="cstat-no" title="statement not covered" >, l</span>ocationState<span class="cstat-no" title="statement not covered" > })</span> =&gt; <span class="cstat-no" title="statement not covered" >(</span>
-    &lt;Link
-      to={orderInfo.number.toString()}
-      relative='path'
-      state={locationState}
-      className={`p-6 mb-4 mr-2 ${styles.order}`}
-    &gt;
-      &lt;div className={styles.order_info}&gt;
-        &lt;span className={`text text_type_digits-default ${styles.number}`}&gt;
-          #{String(orderInfo.number).padStart(6, '0')}
-        &lt;/span&gt;
-        &lt;span className='text text_type_main-default text_color_inactive'&gt;
-          &lt;FormattedDate date={orderInfo.date} /&gt;
-        &lt;/span&gt;
-      &lt;/div&gt;
-      &lt;h4 className={`pt-6 text text_type_main-medium ${styles.order_name}`}&gt;
-        {orderInfo.name}
-      &lt;/h4&gt;
-      {location.pathname === '/profile/orders' &amp;&amp; (
-        &lt;OrderStatus status={orderInfo.status} /&gt;
-      )}
-      &lt;div className={`pt-6 ${styles.order_content}`}&gt;
-        &lt;ul className={styles.ingredients}&gt;
-          {orderInfo.ingredientsToShow.map(<span class="fstat-no" title="function not covered" >(i</span>ngredient, index) =&gt; {
-            let zIndex = <span class="cstat-no" title="statement not covered" >maxIngredients - index;</span>
-            let right = <span class="cstat-no" title="statement not covered" >20 * index;</span>
-<span class="cstat-no" title="statement not covered" >            return (</span>
-              &lt;li
-                className={styles.img_wrap}
-                style={{ zIndex: zIndex, right: right }}
-                key={index}
-              &gt;
-                &lt;img
-                  style={{
-                    opacity:
-                      orderInfo.remains &amp;&amp; maxIngredients === index + 1
-                        ? '0.5'
-                        : '1'
-                  }}
-                  className={styles.img}
-                  src={ingredient.image_mobile}
-                  alt={ingredient.name}
-                /&gt;
-                {maxIngredients === index + 1 ? (
-                  &lt;span
-                    className={`text text_type_digits-default ${styles.remains}`}
-                  &gt;
-                    {orderInfo.remains &gt; 0 ? `+${orderInfo.remains}` : null}
-                  &lt;/span&gt;
-                ) : null}
-              &lt;/li&gt;
-            );
-          })}
-        &lt;/ul&gt;
-        &lt;div&gt;
-          &lt;span
-            className={`text text_type_digits-default pr-1 ${styles.order_total}`}
-          &gt;
-            {orderInfo.total}
+<span class="fstat-no" title="function not covered" >  ({</span> orderInfo<span class="cstat-no" title="statement not covered" >, m</span>axIngredients<span class="cstat-no" title="statement not covered" >, l</span>ocationState<span class="cstat-no" title="statement not covered" > })</span> =&gt; {
+    const location = <span class="cstat-no" title="statement not covered" >useLocation();</span>
+&nbsp;
+    const linkTarget = <span class="cstat-no" title="statement not covered" >location.pathname.startsWith('/profile/orders')</span>
+      ? `/profile/orders/${orderInfo.number}`
+      : `/feed/${orderInfo.number}`;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;Link
+        to={linkTarget}
+        state={locationState}
+        className={`p-6 mb-4 mr-2 ${styles.order}`}
+      &gt;
+        &lt;div className={styles.order_info}&gt;
+          &lt;span className={`text text_type_digits-default ${styles.number}`}&gt;
+            #{String(orderInfo.number).padStart(6, '0')}
           &lt;/span&gt;
-          &lt;CurrencyIcon type='primary' /&gt;
+          &lt;span className='text text_type_main-default text_color_inactive'&gt;
+            &lt;FormattedDate date={orderInfo.date} /&gt;
+          &lt;/span&gt;
         &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/Link&gt;
-  )
+        &lt;h4 className={`pt-6 text text_type_main-medium ${styles.order_name}`}&gt;
+          {orderInfo.name}
+        &lt;/h4&gt;
+        {location.pathname.startsWith('/profile/orders') &amp;&amp; (
+          &lt;OrderStatus status={orderInfo.status} /&gt;
+        )}
+        &lt;div className={`pt-6 ${styles.order_content}`}&gt;
+          &lt;ul className={styles.ingredients}&gt;
+            {orderInfo.ingredientsToShow.map(<span class="fstat-no" title="function not covered" >(i</span>ngredient, index) =&gt; {
+              const zIndex = <span class="cstat-no" title="statement not covered" >maxIngredients - index;</span>
+              const right = <span class="cstat-no" title="statement not covered" >20 * index;</span>
+<span class="cstat-no" title="statement not covered" >              return (</span>
+                &lt;li
+                  className={styles.img_wrap}
+                  style={{ zIndex, right }}
+                  key={index}
+                &gt;
+                  &lt;img
+                    style={{
+                      opacity:
+                        orderInfo.remains &amp;&amp; maxIngredients === index + 1
+                          ? '0.5'
+                          : '1'
+                    }}
+                    className={styles.img}
+                    src={ingredient.image_mobile}
+                    alt={ingredient.name}
+                  /&gt;
+                  {maxIngredients === index + 1 &amp;&amp; orderInfo.remains &gt; 0 &amp;&amp; (
+                    &lt;span
+                      className={`text text_type_digits-default ${styles.remains}`}
+                    &gt;
+                      +{orderInfo.remains}
+                    &lt;/span&gt;
+                  )}
+                &lt;/li&gt;
+              );
+            })}
+          &lt;/ul&gt;
+          &lt;div&gt;
+            &lt;span
+              className={`text text_type_digits-default pr-1 ${styles.order_total}`}
+            &gt;
+              {orderInfo.total}
+            &lt;/span&gt;
+            &lt;CurrencyIcon type='primary' /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/Link&gt;
+    );
+  }
 );
 &nbsp;</pre></td></tr></table></pre>
 
@@ -307,7 +328,7 @@ export const <span class="cstat-no" title="statement not covered" >OrderCardUI: 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-28T10:36:20.639Z
+                at 2025-06-03T14:21:23.440Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
