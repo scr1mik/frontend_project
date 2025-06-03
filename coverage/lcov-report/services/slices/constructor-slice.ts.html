@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>14/20</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>4/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>12/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -151,21 +151,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,8 +184,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,22 +219,22 @@ const constructorSlice = createSlice({
   initialState,
   reducers: {
     setBun: {
-      reducer(state, action: PayloadAction&lt;TConstructorIngredient&gt;) {
-        state.bun = action.payload;
+      reducer<span class="fstat-no" title="function not covered" >(s</span>tate, action: PayloadAction&lt;TConstructorIngredient&gt;) {
+<span class="cstat-no" title="statement not covered" >        state.bun = action.payload;</span>
       },
-      prepare(ingredient: TIngredient) {
-        return { payload: { ...ingredient, id: nanoid() } };
+      prepare<span class="fstat-no" title="function not covered" >(i</span>ngredient: TIngredient) {
+<span class="cstat-no" title="statement not covered" >        return { payload: { ...ingredient, id: nanoid() } };</span>
       }
     },
-    clearBun(state) {
-      state.bun = null;
+    clearBun<span class="fstat-no" title="function not covered" >(s</span>tate) {
+<span class="cstat-no" title="statement not covered" >      state.bun = null;</span>
     },
     addIngredient: {
       reducer(state, action: PayloadAction&lt;TConstructorIngredient&gt;) {
         state.ingredients.push(action.payload);
       },
-      prepare(ingredient: TIngredient) {
-        return {
+      prepare<span class="fstat-no" title="function not covered" >(i</span>ngredient: TIngredient) {
+<span class="cstat-no" title="statement not covered" >        return {</span>
           payload: { ...ingredient, id: nanoid() }
         };
       }
@@ -252,9 +252,9 @@ const constructorSlice = createSlice({
       const [moved] = state.ingredients.splice(fromIndex, 1);
       state.ingredients.splice(toIndex, 0, moved);
     },
-    clearConstructor(state) {
-      state.bun = null;
-      state.ingredients = [];
+    clearConstructor<span class="fstat-no" title="function not covered" >(s</span>tate) {
+<span class="cstat-no" title="statement not covered" >      state.bun = null;</span>
+<span class="cstat-no" title="statement not covered" >      state.ingredients = [];</span>
     }
   }
 });
@@ -277,7 +277,7 @@ export { initialState as initialConstructorFeedsState };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-28T10:36:20.639Z
+                at 2025-06-03T10:02:48.440Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
